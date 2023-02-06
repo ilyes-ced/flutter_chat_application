@@ -1,4 +1,4 @@
-# chat application
+# chat application ( facebook messenger for refrence )
 flutter 
 
 laravel api

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart';
-import 'second_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,51 +7,239 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
+// This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Bottom NavBar Demo',
+      theme: ThemeData(
+        primaryColor: Colors.black,
+        splashColor: Colors.red,
+        highlightColor: Colors.green,
+        hoverColor: Colors.yellow,
+      ),
+      //darkTheme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.deepPurple),
-      home: const RootPage(),
+      home: const HomePage(),
     );
   }
 }
 
-class RootPage extends StatefulWidget {
-  const RootPage({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<RootPage> createState() => _RootPageState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _RootPageState extends State<RootPage> {
-  int page = 0;
+class _HomePageState extends State<HomePage> {
+  int pageIndex = 0;
+
+  final pages = [
+    const Page1(),
+    const Page2(),
+    const Page3(),
+    const Page4(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('hello there'),
+        backgroundColor: Colors.black,
+        leading: const Icon(
+          Icons.menu,
+          color: Colors.white,
+        ),
+        title: const Text(
+          "Geeks For Geeks",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 25,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        centerTitle: true,
       ),
-      body: const HomePage(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          debugPrint('floating action brh');
-        },
-        child: const Icon(Icons.home),
+      body: pages[pageIndex],
+      bottomNavigationBar: buildMyNavBar(context),
+    );
+  }
+
+  Container buildMyNavBar(BuildContext context) {
+    return Container(
+      height: 60,
+      decoration: BoxDecoration(
+        color: Colors.black,
+        //borderRadius: const BorderRadius.only(
+        //  topLeft: Radius.circular(20),
+        //  topRight: Radius.circular(20),
+        //),
       ),
-      bottomNavigationBar: NavigationBar(
-        destinations: const [
-          NavigationDestination(icon: Icon(Icons.plus_one), label: 'label'),
-          NavigationDestination(icon: Icon(Icons.foggy), label: 'center'),
-          NavigationDestination(
-              icon: Icon(Icons.generating_tokens), label: 'test'),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          IconButton(
+            enableFeedback: false,
+            onPressed: () {
+              setState(() {
+                pageIndex = 0;
+              });
+            },
+            icon: pageIndex == 0
+                ? const Icon(
+                    Icons.home_filled,
+                    color: Colors.white,
+                    size: 35,
+                  )
+                : const Icon(
+                    Icons.home_outlined,
+                    color: Colors.white,
+                    size: 35,
+                  ),
+          ),
+          IconButton(
+            enableFeedback: false,
+            onPressed: () {
+              setState(() {
+                pageIndex = 1;
+              });
+            },
+            icon: pageIndex == 1
+                ? const Icon(
+                    Icons.work_rounded,
+                    color: Colors.white,
+                    size: 35,
+                  )
+                : const Icon(
+                    Icons.work_outline_outlined,
+                    color: Colors.white,
+                    size: 35,
+                  ),
+          ),
+          IconButton(
+            enableFeedback: false,
+            onPressed: () {
+              setState(() {
+                pageIndex = 2;
+              });
+            },
+            icon: pageIndex == 2
+                ? const Icon(
+                    Icons.widgets_rounded,
+                    color: Colors.white,
+                    size: 35,
+                  )
+                : const Icon(
+                    Icons.widgets_outlined,
+                    color: Colors.white,
+                    size: 35,
+                  ),
+          ),
+          IconButton(
+            enableFeedback: false,
+            onPressed: () {
+              setState(() {
+                pageIndex = 3;
+              });
+            },
+            icon: pageIndex == 3
+                ? const Icon(
+                    Icons.person,
+                    color: Colors.white,
+                    size: 35,
+                  )
+                : const Icon(
+                    Icons.person_outline,
+                    color: Colors.white,
+                    size: 35,
+                  ),
+          ),
         ],
-        onDestinationSelected: (int index) {
-          setState(() {
-            page = index;
-          });
-        },
-        selectedIndex: page,
+      ),
+    );
+  }
+}
+
+class Page1 extends StatelessWidget {
+  const Page1({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: const Color(0xffC4DFCB),
+      child: Center(
+        child: Text(
+          "Page Number 1",
+          style: TextStyle(
+            color: Colors.green[900],
+            fontSize: 45,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class Page2 extends StatelessWidget {
+  const Page2({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: const Color(0xffC4DFCB),
+      child: Center(
+        child: Text(
+          "Page Number 2",
+          style: TextStyle(
+            color: Colors.green[900],
+            fontSize: 45,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class Page3 extends StatelessWidget {
+  const Page3({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: const Color(0xffC4DFCB),
+      child: Center(
+        child: Text(
+          "Page Number 3",
+          style: TextStyle(
+            color: Colors.green[900],
+            fontSize: 45,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class Page4 extends StatelessWidget {
+  const Page4({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: const Color(0xffC4DFCB),
+      child: Center(
+        child: Text(
+          "Page Number 4",
+          style: TextStyle(
+            color: Colors.green[900],
+            fontSize: 45,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
       ),
     );
   }
