@@ -14,11 +14,46 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+
+        Db::table('users')->insert([
+            'username' => 'ilyes',
+            'email' => 'ilyes@gmail.com',
+            'password' => Hash::make('11062001'),
+            'profile_image' => 'phantom_rtx3090.png'
+        ]);   
+        Db::table('users')->insert([
+            'username' => 'ahmed',
+            'email' => 'ahmed@gmail.com',
+            'password' => Hash::make('11062001'),
+            'profile_image' => 'msi_rtx3050.png'
+        ]);
+        Db::table('users')->insert([
+            'username' => 'ali',
+            'email' => 'ali@gmail.com',
+            'password' => Hash::make('11062001'),
+            'profile_image' => 'iphone_red.jpg'
+        ]);
+
+
+
+
+        Db::table('user_relations')->insert([
+            'username' => 'ali',
+            'email' => 'ali@gmail.com',
+            'password' => Hash::make('11062001'),
+            'profile_image' => 'iphone_red.jpg'
+        ]);
+
+
+
+
+
+
+
+
+
+
     }
 }

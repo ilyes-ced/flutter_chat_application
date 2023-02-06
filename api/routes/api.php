@@ -14,6 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/url', function(){
+    return('hello there');
+});
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::post('/login', function () { return 'wassup'; });
+Route::post('/register', function () { return 'wassup'; });
+Route::get('/', function () { return 'wassup'; });
+Route::get('/', function () { return 'wassup'; });
