@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_relations', function (Blueprint $table) {
+        Schema::create('group_messages', function (Blueprint $table) {
             $table->id();
-            $table->foreign('user_id_1')->references('id')->on('users');
-            $table->foreign('user_id_2')->references('id')->on('users');
+            $table->foreign('user')->references('id')->on('users');
+            $table->string('message');
+            $table->foreign('reciever_id')->references('id')->on('groups');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_relations');
+        Schema::dropIfExists('group_messages');
     }
 };
