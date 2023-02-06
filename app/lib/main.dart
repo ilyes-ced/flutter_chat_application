@@ -47,10 +47,19 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        leading: const Icon(
-          Icons.menu,
-          color: Colors.white,
-        ),
+        leading: IconButton(
+            icon: const Icon(Icons.filter_drama),
+            onPressed: () {
+              debugPrint('hellothere');
+            },
+            style: IconButton.styleFrom(
+              foregroundColor: Colors.blue,
+              backgroundColor: Colors.grey,
+              disabledBackgroundColor: Colors.green.withOpacity(0.12),
+              hoverColor: Colors.blue.withOpacity(0.08),
+              focusColor: Colors.yellow.withOpacity(0.12),
+              highlightColor: Colors.pink.withOpacity(0.12),
+            )),
         title: const Text(
           "Geeks For Geeks",
           style: TextStyle(
