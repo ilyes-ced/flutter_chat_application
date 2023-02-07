@@ -1,5 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import './conversation.dart';
 
 class ChatPage extends StatefulWidget {
   ChatPage({Key? key}) : super(key: key);
@@ -55,11 +55,17 @@ class _ChatPageState extends State<ChatPage> {
                 itemBuilder: (BuildContext context, int index) {
                   return Material(
                     child: ListTile(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                Conversation(data: 'string test'),
+                          ),
+                        );
+                      },
                       tileColor: Colors.black,
                       selectedColor: Colors.green,
-                      onTap: () {
-                        debugPrint("wassup");
-                      },
                       leading: ClipRRect(
                         borderRadius: BorderRadius.circular(100.0),
                         child: Image.asset(
@@ -69,22 +75,22 @@ class _ChatPageState extends State<ChatPage> {
                           fit: BoxFit.fill,
                         ),
                       ),
-                      trailing: IconButton(
-                        icon: const Icon(Icons.more_vert),
-                        onPressed: () {
-                          debugPrint('hellothere');
-                        },
-                        color: Colors.white,
-                        style: IconButton.styleFrom(
-                          foregroundColor: Colors.blue,
-                          backgroundColor: Colors.red,
-                          disabledBackgroundColor:
-                              Colors.green.withOpacity(0.12),
-                          hoverColor: Colors.blue.withOpacity(0.08),
-                          focusColor: Colors.yellow.withOpacity(0.12),
-                          highlightColor: Colors.pink.withOpacity(0.12),
-                        ),
-                      ),
+                      //trailing: IconButton(
+                      //  icon: const Icon(Icons.more_vert),
+                      //  onPressed: () {
+                      //    debugPrint('hellothere');
+                      //  },
+                      //  color: Colors.white,
+                      //  style: IconButton.styleFrom(
+                      //    foregroundColor: Colors.blue,
+                      //    backgroundColor: Colors.red,
+                      //    disabledBackgroundColor:
+                      //        Colors.green.withOpacity(0.12),
+                      //    hoverColor: Colors.blue.withOpacity(0.08),
+                      //    focusColor: Colors.yellow.withOpacity(0.12),
+                      //    highlightColor: Colors.pink.withOpacity(0.12),
+                      //  ),
+                      //),
                       title: Text(
                         "${persons[index].name}",
                         style: const TextStyle(
@@ -108,51 +114,6 @@ class _ChatPageState extends State<ChatPage> {
     );
   }
 }
-/*
-child: Center(
-        child: ListView.builder(
-            itemCount: persons.length,
-            itemBuilder: (BuildContext context, int index) {
-              return ListTile(
-                leading: ClipRRect(
-                  borderRadius: BorderRadius.circular(100.0),
-                  child: Image.asset(
-                    'assets/images/${persons[index].pfp}',
-                    width: 50.0,
-                    height: 50.0,
-                    fit: BoxFit.fill,
-                  ),
-                ),
-                trailing: IconButton(
-                  icon: const Icon(Icons.more_vert),
-                  onPressed: () {
-                    debugPrint('hellothere');
-                  },
-                  color: Colors.white,
-                  style: IconButton.styleFrom(
-                    foregroundColor: Colors.blue,
-                    backgroundColor: Colors.red,
-                    disabledBackgroundColor: Colors.green.withOpacity(0.12),
-                    hoverColor: Colors.blue.withOpacity(0.08),
-                    focusColor: Colors.yellow.withOpacity(0.12),
-                    highlightColor: Colors.pink.withOpacity(0.12),
-                  ),
-                ),
-                title: Text(
-                  "${persons[index].name}",
-                  style: const TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                subtitle: Text(
-                  '${persons[index].lastMessage} -- ${persons[index].date}',
-                  style: const TextStyle(
-                    color: Colors.grey,
-                  ),
-                ),
-              );
-            }),
-      ), */
 
 class Chat {
   String? pfp;
