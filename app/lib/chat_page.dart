@@ -19,17 +19,17 @@ class _ChatPageState extends State<ChatPage> {
     return Container(
       color: Colors.black,
       child: Center(
-          child: Column(
-        children: <Widget>[
-          Container(
-            padding: const EdgeInsets.only(
-              left: 20.0,
-              right: 20.0,
-              top: 20.0,
-              bottom: 20.0,
-            ),
-            child: TextField(
-              decoration: InputDecoration(
+        child: Column(
+          children: <Widget>[
+            Container(
+              padding: const EdgeInsets.only(
+                left: 20.0,
+                right: 20.0,
+                top: 20.0,
+                bottom: 20.0,
+              ),
+              child: TextField(
+                decoration: InputDecoration(
                   prefixIcon: const Icon(
                     Icons.search,
                     color: Colors.grey,
@@ -37,17 +37,20 @@ class _ChatPageState extends State<ChatPage> {
                   filled: true,
                   focusColor: Colors.red,
                   iconColor: Colors.blue,
-                  fillColor: Color.fromARGB(255, 67, 67, 67),
+                  fillColor: const Color.fromARGB(255, 67, 67, 67),
                   border: OutlineInputBorder(
-                    borderSide: new BorderSide(color: Colors.transparent),
-                    borderRadius: new BorderRadius.circular(25.7),
+                    borderSide: const BorderSide(color: Colors.transparent),
+                    borderRadius: BorderRadius.circular(25.7),
                   ),
                   hintText: 'Enter a search term',
-                  hintStyle: TextStyle(color: Colors.grey)),
+                  hintStyle: const TextStyle(
+                    color: Colors.grey,
+                  ),
+                ),
+              ),
             ),
-          ),
-          Expanded(
-            child: ListView.builder(
+            Expanded(
+              child: ListView.builder(
                 itemCount: persons.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Material(
@@ -96,10 +99,12 @@ class _ChatPageState extends State<ChatPage> {
                       ),
                     ),
                   );
-                }),
-          ),
-        ],
-      )),
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
