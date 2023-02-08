@@ -19,12 +19,12 @@ Route::get('/url', function(){
 });
 
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->get('/data', function (Request $request) {
+    return '$request->user()';
 });
 
 
 Route::post('/login', function () { return 'wassup'; });
 Route::post('/register', function () { return 'wassup'; });
-Route::get('/', function () { return 'wassup'; });
+//Route::get('/data', function () { return 'wassup'; });
 Route::get('/', function () { return 'wassup'; });

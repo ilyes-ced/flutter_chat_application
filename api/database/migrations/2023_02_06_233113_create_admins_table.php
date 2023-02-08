@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('group_id');
+            $table->foreignId('user_id');
             $table->foreign('group_id')->references('id')->on('groups');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

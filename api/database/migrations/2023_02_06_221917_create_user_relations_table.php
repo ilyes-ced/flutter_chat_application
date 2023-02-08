@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('user_relations', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('user_id_1');
+            $table->foreignId('user_id_2');
             $table->foreign('user_id_1')->references('id')->on('users');
             $table->foreign('user_id_2')->references('id')->on('users');
             $table->timestamps();

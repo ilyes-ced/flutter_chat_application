@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('group_messages', function (Blueprint $table) {
             $table->id();
-            $table->foreign('user')->references('id')->on('users');
+            $table->foreignId('user');
             $table->string('message');
+            $table->foreignId('reciever_id');
+            $table->foreign('user')->references('id')->on('users');
             $table->foreign('reciever_id')->references('id')->on('groups');
             $table->timestamps();
         });
