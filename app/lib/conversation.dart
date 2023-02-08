@@ -9,12 +9,6 @@ class Conversation extends StatefulWidget {
 }
 
 class _ConversationState extends State<Conversation> {
-  String? pfp;
-  String? username;
-  int? usernameId;
-  String? message;
-  String? time;
-
   List messages = [
     Message("cat_16.jpg", 'ahmed', 10, 'wassup man long fzef12331111', '16:40'),
     Message("cat_20.jpg", 'ilyes', 10, 'wassup man long fzef123222', '16:40'),
@@ -31,7 +25,7 @@ class _ConversationState extends State<Conversation> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         leading: IconButton(
-          icon: const Icon(Icons.menu),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             debugPrint('hellothere');
           },
@@ -91,43 +85,46 @@ class _ConversationState extends State<Conversation> {
                 child: ListView.builder(
                   itemCount: messages.length,
                   itemBuilder: (BuildContext context, int index) {
+                    debugPrint(
+                        '/////////////////////////////////////////////////////////////////////////////////// ${messages[index].message}');
                     return Material(
                       child: ListTile(
-                          contentPadding: EdgeInsets.symmetric(
-                            vertical: 0.0,
-                            horizontal: 16.0,
-                          ),
-                          dense: true,
-                          onTap: () {},
-                          tileColor: Colors.black,
-                          selectedColor: Colors.green,
-                          leading: Row(
-                            children: [
-                              if (messages[index].username == 'ilyes') exp(),
-                              Container(
-                                padding: const EdgeInsets.only(
-                                  left: 10.0,
-                                  right: 10.0,
-                                  top: 10.0,
-                                  bottom: 10.0,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: messages[index].username == 'ilyes'
-                                      ? Colors.blue
-                                      : Color.fromARGB(255, 68, 68, 68),
-                                  borderRadius: const BorderRadius.all(
-                                    Radius.circular(20),
-                                  ),
-                                ),
-                                child: Text(
-                                  '${messages[index].message} ${messages.length}',
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                  ),
+                        contentPadding: EdgeInsets.symmetric(
+                          vertical: 0.0,
+                          horizontal: 16.0,
+                        ),
+                        dense: true,
+                        onTap: () {},
+                        tileColor: Colors.black,
+                        selectedColor: Colors.green,
+                        leading: Row(
+                          children: [
+                            if (messages[index].username == 'ilyes') exp(),
+                            Container(
+                              padding: const EdgeInsets.only(
+                                left: 10.0,
+                                right: 10.0,
+                                top: 10.0,
+                                bottom: 10.0,
+                              ),
+                              decoration: BoxDecoration(
+                                color: messages[index].username == 'ilyes'
+                                    ? Colors.blue
+                                    : Color.fromARGB(255, 68, 68, 68),
+                                borderRadius: const BorderRadius.all(
+                                  Radius.circular(20),
                                 ),
                               ),
-                            ],
-                          )),
+                              child: Text(
+                                '${messages[index].message}',
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     );
                   },
                 ),
@@ -208,33 +205,12 @@ class _ConversationState extends State<Conversation> {
   }
 }
 
-/*TextField(
-          decoration: InputDecoration(
-            prefixIcon: const Icon(
-              Icons.search,
-              color: Colors.grey,
-            ),
-            filled: true,
-            focusColor: Colors.red,
-            iconColor: Colors.blue,
-            fillColor: const Color.fromARGB(255, 67, 67, 67),
-            border: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.transparent),
-              borderRadius: BorderRadius.circular(25.7),
-            ),
-            hintText: 'Enter a search term',
-            hintStyle: const TextStyle(
-              color: Colors.grey,
-            ),
-          ),
-        ), */
-
 class Message {
-  String? pfp;
-  String? username;
-  int? usernameId;
-  String? message;
-  String? time;
+  String pfp;
+  String username;
+  int usernameId;
+  String message;
+  String time;
 
   Message(this.pfp, this.username, this.usernameId, this.message, this.time);
 }
@@ -245,6 +221,7 @@ Widget exp() {
     child: Container(
       width: 100.0,
       height: 100.0,
+      color: Colors.red,
     ),
   );
 }
