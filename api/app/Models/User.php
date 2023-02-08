@@ -48,24 +48,40 @@ class User extends Authenticatable
 
 
 
-    public function UserMessage(){
-        return $this->hasMany(UserMessage::class);
+    public function user_messages_sent(){
+        return $this->hasMany(UserMessage::class, 'sender_id');
     }
-    public function GroupMessage(){
+    public function user_messages_recieved(){
+        return $this->hasMany(UserMessage::class, 'reciever_id');
+    }
+
+
+    public function group_messages(){
         return $this->hasMany(GroupMessage::class);
     }
-    public function UserRelation(){
-        return $this->hasMany(UserRelation::class);
+
+    
+    public function user_relations_started(){
+        return $this->hasMany(UserRelation::class, 'user_id_1');
     }
-    public function Group(){
-        return $this->hasMany(Group::class);
+    public function user_relations_in(){
+        return $this->hasMany(UserRelation::class, 'user_id_2');
     }
-    public function Invite(){
-        return $this->hasMany(Invite::class);
-    }
-    public function GroupMember(){
+    public function group_member(){
         return $this->hasMany(GroupMember::class);
     }
+
+
+    public function invites_sent(){
+        return $this->hasMany(Invite::class, 'sender_id');
+    }
+    public function invites_recieved(){
+        return $this->hasMany(Invite::class, 'reciever_id');
+    }
+
+    
+
+
 
 
 }

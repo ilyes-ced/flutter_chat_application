@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +37,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     
     Route::post('/logout', [AuthController::class, 'logout' ]);
     
-    Route::get('/all_chats', [AuthController::class, 'logout' ]);
+    Route::get('/all_chats', [ChatController::class, 'all_chats' ]);
     
 });
 

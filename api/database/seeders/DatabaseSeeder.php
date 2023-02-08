@@ -58,11 +58,11 @@ class DatabaseSeeder extends Seeder
 
         Db::table('groups')->insert([
             'name' => 'hello first group',
-            'owner' => 1,
+            'owner_id' => 1,
         ]);
         Db::table('groups')->insert([
             'name' => 'hello second group',
-            'owner' => 1,
+            'owner_id' => 1,
         ]);
 
 
@@ -90,45 +90,45 @@ class DatabaseSeeder extends Seeder
 
 
         Db::table('group_messages')->insert([
-            'user' => 1,
+            'user_id' => 1,
             'message' => 'hello 1',
-            'reciever_id' => 1,
+            'group_id' => 1,
         ]);
         Db::table('group_messages')->insert([
-            'user' => 2,
+            'user_id' => 2,
             'message' => 'hello 2 user2',
-            'reciever_id' => 1,
+            'group_id' => 1,
         ]);
         Db::table('group_messages')->insert([
-            'user' => 3,
+            'user_id' => 3,
             'message' => 'hello 1 suser 3',
-            'reciever_id' => 1,
+            'group_id' => 1,
         ]);
         Db::table('group_messages')->insert([
-            'user' => 1,
+            'user_id' => 1,
             'message' => 'hello 1user 1  ',
-            'reciever_id' => 1,
+            'group_id' => 1,
         ]);
         Db::table('group_messages')->insert([
-            'user' => 1,
+            'user_id' => 1,
             'message' => 'hello 1user 1  ',
-            'reciever_id' => 1,
+            'group_id' => 1,
         ]);
 
         
         
         Db::table('user_messages')->insert([
-            'user' => 1,
+            'sender_id' => 1,
             'message' => 'hello 1user 1 to user2',
             'reciever_id' => 2,
         ]);
         Db::table('user_messages')->insert([
-            'user' => 2,
+            'sender_id' => 2,
             'message' => 'hello 1user 1 to user2',
             'reciever_id' => 1,
         ]);
         Db::table('user_messages')->insert([
-            'user' => 3,
+            'sender_id' => 3,
             'message' => 'hello 1user 1 to user2',
             'reciever_id' => 1,
         ]);

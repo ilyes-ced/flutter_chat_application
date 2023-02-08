@@ -29,7 +29,14 @@ class _ChatPageState extends State<ChatPage> {
                 bottom: 20.0,
               ),
               child: TextField(
+                //want to change the style for label and hint then
+
                 decoration: InputDecoration(
+                  isDense: true,
+                  contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                  hintStyle: TextStyle(
+                    color: Colors.grey,
+                  ),
                   prefixIcon: const Icon(
                     Icons.search,
                     color: Colors.grey,
@@ -43,9 +50,6 @@ class _ChatPageState extends State<ChatPage> {
                     borderRadius: BorderRadius.circular(25.7),
                   ),
                   hintText: 'Enter a search term',
-                  hintStyle: const TextStyle(
-                    color: Colors.grey,
-                  ),
                 ),
               ),
             ),
@@ -54,6 +58,7 @@ class _ChatPageState extends State<ChatPage> {
                 itemCount: persons.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Material(
+                    color: Colors.black,
                     child: ListTile(
                       onTap: () {
                         Navigator.push(

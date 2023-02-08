@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('invites', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('from');
-            $table->foreignId('to');
-            $table->foreign('from')->references('id')->on('users');
-            $table->foreign('to')->references('id')->on('users');
+            $table->foreignId('sender_id');
+            $table->foreignId('reciever_id');
+            $table->foreign('sender_id')->references('id')->on('users');
+            $table->foreign('reciever_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

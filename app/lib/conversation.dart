@@ -62,6 +62,8 @@ class _ConversationState extends State<Conversation> {
                 height: 90,
                 child: TextField(
                   decoration: InputDecoration(
+                    isDense: true,
+                    contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                     prefixIcon: const Icon(
                       Icons.search,
                       color: Colors.grey,
@@ -85,9 +87,10 @@ class _ConversationState extends State<Conversation> {
                 child: ListView.builder(
                   itemCount: messages.length,
                   itemBuilder: (BuildContext context, int index) {
-                    debugPrint(
-                        '/////////////////////////////////////////////////////////////////////////////////// ${messages[index].message}');
+                    //debugPrint(
+                    //    '/////////////////////////////////////////////////////////////////////////////////// ${messages[index].message}');
                     return Material(
+                      color: Colors.black,
                       child: ListTile(
                         contentPadding: EdgeInsets.symmetric(
                           vertical: 0.0,
@@ -171,6 +174,8 @@ class _ConversationState extends State<Conversation> {
               Expanded(
                 child: TextField(
                   decoration: InputDecoration(
+                    isDense: true,
+                    contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                     prefixIcon: const Icon(
                       Icons.search,
                       color: Colors.grey,
@@ -225,3 +230,45 @@ Widget exp() {
     ),
   );
 }
+
+
+/*
+
+                        contentPadding: EdgeInsets.symmetric(
+                          vertical: 0.0,
+                          horizontal: 16.0,
+                        ),
+                        dense: true,
+                        onTap: () {},
+                        tileColor: Colors.black,
+                        selectedColor: Colors.green,
+                        leading: Row(
+                          children: [
+                            //if (messages[index].username == 'ilyes') exp(),
+                            Container(
+                              padding: const EdgeInsets.only(
+                                left: 10.0,
+                                right: 10.0,
+                                top: 10.0,
+                                bottom: 10.0,
+                              ),
+                              decoration: BoxDecoration(
+                                color: /*messages[index].username == 'ilyes'
+                                    ? Colors.blue
+                                    :*/
+                                    Color.fromARGB(255, 68, 68, 68),
+                                borderRadius: const BorderRadius.all(
+                                  Radius.circular(20),
+                                ),
+                              ),
+                              child: Text(
+                                " ezfzef", //'${messages[index].message}',
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                     
+                      */

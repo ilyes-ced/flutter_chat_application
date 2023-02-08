@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Invite extends Model
 {
     use HasFactory;
+
+
+
+
+
+
+
+    public function sender(){
+        return $this->belongsTo(User::class, 'id', 'sender_id');
+    }
+    public function reciever(){
+        return $this->belongsTo(User::class, 'id', 'reciever_id');
+    }
 }
