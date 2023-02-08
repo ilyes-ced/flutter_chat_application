@@ -93,31 +93,41 @@ class _ConversationState extends State<Conversation> {
                   itemBuilder: (BuildContext context, int index) {
                     return Material(
                       child: ListTile(
-                        contentPadding: EdgeInsets.symmetric(
-                          vertical: 0.0,
-                          horizontal: 16.0,
-                        ),
-                        dense: true,
-                        onTap: () {},
-                        tileColor: Colors.black,
-                        selectedColor: Colors.green,
-                        leading: Container(
-                          padding: const EdgeInsets.only(
-                            left: 10.0,
-                            right: 10.0,
-                            top: 10.0,
-                            bottom: 10.0,
+                          contentPadding: EdgeInsets.symmetric(
+                            vertical: 0.0,
+                            horizontal: 16.0,
                           ),
-                          decoration: const BoxDecoration(
-                            color: Colors.blue,
-                            borderRadius: const BorderRadius.all(
-                              Radius.circular(20),
-                            ),
-                          ),
-                          child: Text(
-                              '${messages[index].message} ${messages.length}'),
-                        ),
-                      ),
+                          dense: true,
+                          onTap: () {},
+                          tileColor: Colors.black,
+                          selectedColor: Colors.green,
+                          leading: Row(
+                            children: [
+                              if (messages[index].username == 'ilyes') exp(),
+                              Container(
+                                padding: const EdgeInsets.only(
+                                  left: 10.0,
+                                  right: 10.0,
+                                  top: 10.0,
+                                  bottom: 10.0,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: messages[index].username == 'ilyes'
+                                      ? Colors.blue
+                                      : Color.fromARGB(255, 68, 68, 68),
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(20),
+                                  ),
+                                ),
+                                child: Text(
+                                  '${messages[index].message} ${messages.length}',
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )),
                     );
                   },
                 ),
@@ -227,4 +237,14 @@ class Message {
   String? time;
 
   Message(this.pfp, this.username, this.usernameId, this.message, this.time);
+}
+
+Widget exp() {
+  return Expanded(
+    flex: 1,
+    child: Container(
+      width: 100.0,
+      height: 100.0,
+    ),
+  );
 }
