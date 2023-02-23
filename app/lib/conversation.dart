@@ -86,13 +86,13 @@ class _ConversationState extends State<Conversation> {
               Expanded(
                 child: ListView.builder(
                   itemCount: messages.length,
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
                   itemBuilder: (BuildContext context, int index) {
-                    //debugPrint(
-                    //    '/////////////////////////////////////////////////////////////////////////////////// ${messages[index].message}');
                     return Material(
                       color: Colors.black,
                       child: ListTile(
-                        contentPadding: EdgeInsets.symmetric(
+                        contentPadding: const EdgeInsets.symmetric(
                           vertical: 0.0,
                           horizontal: 16.0,
                         ),
