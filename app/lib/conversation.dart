@@ -17,6 +17,41 @@ class _ConversationState extends State<Conversation> {
     Message("cat_16.jpg", 'ahmed', 10, 'wassup man long fz555555555', '16:40'),
     Message("cat_20.jpg", 'ilyes', 10, 'wassup man long6666666', '16:40'),
     Message("cat_16.jpg", 'ahmed', 10, 'wassup man long 237777777773', '16:40'),
+    Message("cat_16.jpg", 'ahmed', 10, 'wassup man long fzef12331111', '16:40'),
+    Message("cat_20.jpg", 'ilyes', 10, 'wassup man long fzef123222', '16:40'),
+    Message("cat_16.jpg", 'ahmed', 10, 'wassup man long fz3333333333', '16:40'),
+    Message("cat_20.jpg", 'ilyes', 10, 'wassup man long f44444444', '16:40'),
+    Message("cat_16.jpg", 'ahmed', 10, 'wassup man long fz555555555', '16:40'),
+    Message("cat_20.jpg", 'ilyes', 10, 'wassup man long6666666', '16:40'),
+    Message("cat_16.jpg", 'ahmed', 10, 'wassup man long 237777777773', '16:40'),
+    Message("cat_16.jpg", 'ahmed', 10, 'wassup man long fzef12331111', '16:40'),
+    Message("cat_20.jpg", 'ilyes', 10, 'wassup man long fzef123222', '16:40'),
+    Message("cat_16.jpg", 'ahmed', 10, 'wassup man long fz3333333333', '16:40'),
+    Message("cat_20.jpg", 'ilyes', 10, 'wassup man long f44444444', '16:40'),
+    Message("cat_16.jpg", 'ahmed', 10, 'wassup man long fz555555555', '16:40'),
+    Message("cat_20.jpg", 'ilyes', 10, 'wassup man long6666666', '16:40'),
+    Message("cat_16.jpg", 'ahmed', 10, 'wassup man long 237777777773', '16:40'),
+    Message("cat_16.jpg", 'ahmed', 10, 'wassup man long fzef12331111', '16:40'),
+    Message("cat_20.jpg", 'ilyes', 10, 'wassup man long fzef123222', '16:40'),
+    Message("cat_16.jpg", 'ahmed', 10, 'wassup man long fz3333333333', '16:40'),
+    Message("cat_20.jpg", 'ilyes', 10, 'wassup man long f44444444', '16:40'),
+    Message("cat_16.jpg", 'ahmed', 10, 'wassup man long fz555555555', '16:40'),
+    Message("cat_20.jpg", 'ilyes', 10, 'wassup man long6666666', '16:40'),
+    Message("cat_16.jpg", 'ahmed', 10, 'wassup man long 237777777773', '16:40'),
+    Message("cat_16.jpg", 'ahmed', 10, 'wassup man long fzef12331111', '16:40'),
+    Message("cat_20.jpg", 'ilyes', 10, 'wassup man long fzef123222', '16:40'),
+    Message("cat_16.jpg", 'ahmed', 10, 'wassup man long fz3333333333', '16:40'),
+    Message("cat_20.jpg", 'ilyes', 10, 'wassup man long f44444444', '16:40'),
+    Message("cat_16.jpg", 'ahmed', 10, 'wassup man long fz555555555', '16:40'),
+    Message("cat_20.jpg", 'ilyes', 10, 'wassup man long6666666', '16:40'),
+    Message("cat_16.jpg", 'ahmed', 10, 'wassup man long 237777777773', '16:40'),
+    Message("cat_16.jpg", 'ahmed', 10, 'wassup man long fzef12331111', '16:40'),
+    Message("cat_20.jpg", 'ilyes', 10, 'wassup man long fzef123222', '16:40'),
+    Message("cat_16.jpg", 'ahmed', 10, 'wassup man long fz3333333333', '16:40'),
+    Message("cat_20.jpg", 'ilyes', 10, 'wassup man long f44444444', '16:40'),
+    Message("cat_16.jpg", 'ahmed', 10, 'wassup man long fz555555555', '16:40'),
+    Message("cat_20.jpg", 'ilyes', 10, 'wassup man long6666666', '16:40'),
+    Message("cat_16.jpg", 'ahmed', 10, 'wassup man long 237777777773', '16:40'),
   ];
   @override
   Widget build(BuildContext context) {
@@ -86,48 +121,10 @@ class _ConversationState extends State<Conversation> {
               Expanded(
                 child: ListView.builder(
                   itemCount: messages.length,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
                   itemBuilder: (BuildContext context, int index) {
                     return Material(
                       color: Colors.black,
-                      child: ListTile(
-                        contentPadding: const EdgeInsets.symmetric(
-                          vertical: 0.0,
-                          horizontal: 16.0,
-                        ),
-                        dense: true,
-                        onTap: () {},
-                        tileColor: Colors.black,
-                        selectedColor: Colors.green,
-                        leading: Row(
-                          children: [
-                            if (messages[index].username == 'ilyes') exp(),
-                            Container(
-                              padding: const EdgeInsets.only(
-                                left: 10.0,
-                                right: 10.0,
-                                top: 10.0,
-                                bottom: 10.0,
-                              ),
-                              decoration: BoxDecoration(
-                                color: messages[index].username == 'ilyes'
-                                    ? Colors.blue
-                                    : Color.fromARGB(255, 68, 68, 68),
-                                borderRadius: const BorderRadius.all(
-                                  Radius.circular(20),
-                                ),
-                              ),
-                              child: Text(
-                                '${messages[index].message}',
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                      child: tile(messages[index]),
                     );
                   },
                 ),
@@ -231,44 +228,79 @@ Widget exp() {
   );
 }
 
+Widget tile(msg) {
+  return ListTile(
+    leading: FlutterLogo(size: 56.0),
+    title: Text(
+      'Two-line ListTile',
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: 25,
+        fontWeight: FontWeight.w600,
+      ),
+    ),
+    trailing: Icon(
+      Icons.more_vert,
+      color: Colors.white,
+    ),
+  );
+}
 
-/*
+Widget test() {
+  return Text(
+    "Chats",
+    style: TextStyle(
+      color: Colors.white,
+      fontSize: 25,
+      fontWeight: FontWeight.w600,
+    ),
+  );
+}
 
-                        contentPadding: EdgeInsets.symmetric(
-                          vertical: 0.0,
-                          horizontal: 16.0,
-                        ),
-                        dense: true,
-                        onTap: () {},
-                        tileColor: Colors.black,
-                        selectedColor: Colors.green,
-                        leading: Row(
-                          children: [
-                            //if (messages[index].username == 'ilyes') exp(),
-                            Container(
-                              padding: const EdgeInsets.only(
-                                left: 10.0,
-                                right: 10.0,
-                                top: 10.0,
-                                bottom: 10.0,
-                              ),
-                              decoration: BoxDecoration(
-                                color: /*messages[index].username == 'ilyes'
-                                    ? Colors.blue
-                                    :*/
-                                    Color.fromARGB(255, 68, 68, 68),
-                                borderRadius: const BorderRadius.all(
-                                  Radius.circular(20),
-                                ),
-                              ),
-                              child: Text(
-                                " ezfzef", //'${messages[index].message}',
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                     
-                      */
+
+/***
+ * 
+ * 
+ * ListTile(
+    contentPadding: const EdgeInsets.symmetric(
+      vertical: 0.0,
+      horizontal: 16.0,
+    ),
+    dense: true,
+    onTap: () {},
+    tileColor: Colors.black,
+    selectedColor: Colors.green,
+    leading: Row(
+      children: [
+        if (msg.username == 'ilyes') exp(),
+        Container(
+          padding: const EdgeInsets.only(
+            left: 10.0,
+            right: 10.0,
+            top: 10.0,
+            bottom: 10.0,
+          ),
+          decoration: BoxDecoration(
+            color: msg.username == 'ilyes'
+                ? Colors.blue
+                : Color.fromARGB(255, 68, 68, 68),
+            borderRadius: const BorderRadius.all(
+              Radius.circular(20),
+            ),
+          ),
+          child: Text(
+            '${msg.message}',
+            style: const TextStyle(
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ],
+    ),
+    title: Text('These ListTiles are expanded '),
+  )
+ * 
+ * 
+ * 
+ * 
+ */
