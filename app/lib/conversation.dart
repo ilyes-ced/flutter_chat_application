@@ -102,6 +102,7 @@ class _ConversationState extends State<Conversation> {
                     prefixIcon: const Icon(
                       Icons.search,
                       color: Colors.grey,
+                      size: 30,
                     ),
                     filled: true,
                     focusColor: Colors.red,
@@ -124,7 +125,7 @@ class _ConversationState extends State<Conversation> {
                   itemBuilder: (BuildContext context, int index) {
                     return Material(
                       color: Colors.black,
-                      child: tile(messages[index]),
+                      child: message(messages[index]),
                     );
                   },
                 ),
@@ -155,7 +156,7 @@ class _ConversationState extends State<Conversation> {
                 onPressed: () {},
                 icon: const Icon(
                   Icons.camera_alt,
-                  size: 25,
+                  size: 30,
                   color: Colors.white,
                 ),
               ),
@@ -164,19 +165,16 @@ class _ConversationState extends State<Conversation> {
                 onPressed: () {},
                 icon: const Icon(
                   Icons.mic_rounded,
-                  size: 25,
+                  size: 30,
                   color: Colors.white,
                 ),
               ),
               Expanded(
                 child: TextField(
+                  style: const TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                     isDense: true,
-                    contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                    prefixIcon: const Icon(
-                      Icons.search,
-                      color: Colors.grey,
-                    ),
+                    contentPadding: const EdgeInsets.all(12),
                     filled: true,
                     focusColor: Colors.red,
                     iconColor: Colors.blue,
@@ -185,7 +183,7 @@ class _ConversationState extends State<Conversation> {
                       borderSide: const BorderSide(color: Colors.transparent),
                       borderRadius: BorderRadius.circular(25.7),
                     ),
-                    hintText: 'Enter a search term',
+                    hintText: 'message',
                     hintStyle: const TextStyle(
                       color: Colors.grey,
                     ),
@@ -197,7 +195,7 @@ class _ConversationState extends State<Conversation> {
                 onPressed: () {},
                 icon: const Icon(
                   Icons.thumb_up_sharp,
-                  size: 25,
+                  size: 30,
                   color: Colors.white,
                 ),
               ),
@@ -230,6 +228,7 @@ Widget exp() {
 
 Widget tile(msg) {
   return ListTile(
+    tileColor: Colors.grey,
     leading: FlutterLogo(size: 56.0),
     title: Text(
       'Two-line ListTile',
@@ -239,9 +238,13 @@ Widget tile(msg) {
         fontWeight: FontWeight.w600,
       ),
     ),
-    trailing: Icon(
-      Icons.more_vert,
-      color: Colors.white,
+    trailing: Text(
+      'Two-line ListTile',
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: 25,
+        fontWeight: FontWeight.w600,
+      ),
     ),
   );
 }
@@ -256,7 +259,6 @@ Widget test() {
     ),
   );
 }
-
 
 /***
  * 
@@ -304,3 +306,44 @@ Widget test() {
  * 
  * 
  */
+
+Widget message(message) {
+  return Container(
+    padding: EdgeInsets.only(
+      top: 4,
+      bottom: 4,
+      left: message.username == 'ilyes' ? 0 : 24,
+      right: message.username == 'ilyes' ? 24 : 0,
+    ),
+    alignment: message.username == 'ilyes'
+        ? Alignment.centerRight
+        : Alignment.centerLeft,
+    child: Container(
+      margin: message.username == 'ilyes'
+          ? const EdgeInsets.only(left: 30)
+          : const EdgeInsets.only(right: 30),
+      padding: const EdgeInsets.only(top: 17, bottom: 17, left: 20, right: 20),
+      decoration: BoxDecoration(
+          borderRadius: message.username == 'ilyes'
+              ? const BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                  bottomLeft: Radius.circular(20),
+                )
+              : const BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                  bottomRight: Radius.circular(20),
+                ),
+          color: message.username == 'ilyes' ? Colors.red : Colors.grey[700]),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('messsssssssssssssssssdazd azd qefz eqfzeq ssage',
+              textAlign: TextAlign.start,
+              style: const TextStyle(fontSize: 16, color: Colors.white))
+        ],
+      ),
+    ),
+  );
+}
