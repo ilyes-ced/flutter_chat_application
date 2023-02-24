@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import './constants.dart';
-import './google_fonts.dart';
 
 // This is our  main focus
 // Let's apply light and dark theme on our app
@@ -12,12 +11,10 @@ ThemeData lightThemeData(BuildContext context) {
     scaffoldBackgroundColor: Colors.white,
     appBarTheme: appBarTheme,
     iconTheme: IconThemeData(color: content_light_theme),
-    textTheme: GoogleFonts.interTextTheme(Theme.of(context).textTheme)
-        .apply(bodyColor: content_light_theme),
     colorScheme: ColorScheme.light(
       primary: primary_color,
-      secondary: kSecondaryColor,
-      error: kErrorColor,
+      secondary: secondary_color,
+      error: error_color,
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: Colors.white,
@@ -37,8 +34,6 @@ ThemeData darkThemeData(BuildContext context) {
     scaffoldBackgroundColor: content_light_theme,
     appBarTheme: appBarTheme,
     iconTheme: IconThemeData(color: content_dark_theme),
-    textTheme: GoogleFonts.interTextTheme(Theme.of(context).textTheme)
-        .apply(bodyColor: content_dark_theme),
     colorScheme: ColorScheme.dark().copyWith(
       primary: primary_color,
       secondary: secondary_color,
