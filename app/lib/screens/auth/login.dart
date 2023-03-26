@@ -1,9 +1,10 @@
+import 'package:flutter/material.dart';
 import '/components/primary_button.dart';
 import '/constants.dart';
 import '/screens/chat/home.dart';
+import './register.dart';
 import '../../components/chat_input.dart';
 import '../../components/login_input.dart';
-import 'package:flutter/material.dart';
 
 class Login extends StatelessWidget {
   @override
@@ -21,25 +22,45 @@ class Login extends StatelessWidget {
                     : "assets/images/main.png",
                 height: 146,
               ),
-              Spacer(),
-              ChatInput(),
+              SizedBox(height: default_padding * 1),
+              Text(
+                "Messenger lite",
+                textAlign: TextAlign.center,
+                style: Theme.of(context)
+                    .textTheme
+                    .headline5!
+                    .copyWith(fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: default_padding * 3),
               LoginInput(type: 'Email'),
               LoginInput(type: 'Password'),
-              PrimaryButton(
-                text: "Sign In",
-                press: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ChatHome(),
+              SizedBox(height: default_padding * 1),
+              Row(children: [
+                Expanded(
+                  child: PrimaryButton(
+                    color: Theme.of(context).colorScheme.secondary,
+                    text: "register",
+                    press: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Register(),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(height: default_padding * 1.5),
-              PrimaryButton(
-                color: Theme.of(context).colorScheme.secondary,
-                text: "Sign Up",
-                press: () {},
-              ),
+                SizedBox(width: default_padding * 2),
+                Expanded(
+                  child: PrimaryButton(
+                    text: "login",
+                    press: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ChatHome(),
+                      ),
+                    ),
+                  ),
+                ),
+              ]),
               Spacer(flex: 2),
             ],
           ),
