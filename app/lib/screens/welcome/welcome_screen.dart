@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '/constants.dart';
-import '/screens/auth/register.dart';
+import '/screens/auth/login.dart';
 
 class WelcomeScreen extends StatelessWidget {
   @override
@@ -11,7 +11,11 @@ class WelcomeScreen extends StatelessWidget {
         child: Column(
           children: [
             Spacer(flex: 2),
-            Image.asset("assets/images/main.png"),
+            SizedBox(
+              width: double.infinity,
+              height: 150.0,
+              child: Image.asset("assets/images/main.png"),
+            ),
             Spacer(flex: 3),
             Text(
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nId aliquet lectus proin nibh nisl.",
@@ -39,7 +43,7 @@ class WelcomeScreen extends StatelessWidget {
                   onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Register(),
+                          builder: (context) => Login(),
                         ),
                       ),
                   child: Row(
