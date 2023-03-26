@@ -11,10 +11,10 @@ class WelcomeScreen extends StatelessWidget {
         child: Column(
           children: [
             Spacer(flex: 2),
-            Image.asset("assets/images/welcome_image.png"),
+            Image.asset("assets/images/main.png"),
             Spacer(flex: 3),
             Text(
-              "Welcome to our freedom \nmessaging app",
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nId aliquet lectus proin nibh nisl.",
               textAlign: TextAlign.center,
               style: Theme.of(context)
                   .textTheme
@@ -23,7 +23,7 @@ class WelcomeScreen extends StatelessWidget {
             ),
             Spacer(),
             Text(
-              "Freedom talk any person of your \nmother language.",
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit,\nsed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nId aliquet lectus proin nibh nisl.",
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Theme.of(context)

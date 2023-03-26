@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+
+<svg
+   width="800px"
+   height="800px"
+   viewBox="-1 0 226 226"
+   version="1.1"
+   id="svg60"
+   sodipodi:docname="main.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview62"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     showgrid="false"
+     inkscape:zoom="0.52"
+     inkscape:cx="-152.88462"
+     inkscape:cy="392.30769"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg60" />
+  <defs
+     id="defs54">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient954">
+      <stop
+         style="stop-color:#1d1d35;stop-opacity:1;"
+         offset="0"
+         id="stop950" />
+      <stop
+         style="stop-color:#00bf6d;stop-opacity:1;"
+         offset="1"
+         id="stop952" />
+    </linearGradient>
+    <linearGradient
+       id="a"
+       y1="6.76%"
+       x2="50%"
+       x1="50%"
+       y2="95.6%">
+      <stop
+         stop-color="#00C6FF"
+         offset="0"
+         id="stop49"
+         style="stop-color:#ff00d1;stop-opacity:1;" />
+      <stop
+         stop-color="#0068FF"
+         offset="1"
+         id="stop51"
+         style="stop-color:#1875ff;stop-opacity:1;" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient954"
+       id="radialGradient956"
+       cx="42.187847"
+       cy="222.62961"
+       fx="42.187847"
+       fy="222.62961"
+       r="112"
+       gradientTransform="matrix(1.6234927,0.0114842,-0.01398725,1.9773412,-23.189837,-217.2267)"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <path
+     fill="url(#a)"
+     d="m41.255 185.52v40.2l37.589-21.37c10.478 3.02 21.616 4.65 33.156 4.65 61.86 0 112-46.79 112-104.5 0-57.714-50.14-104.5-112-104.5-61.856 0-112 46.786-112 104.5 0 32.68 16.078 61.86 41.255 81.02z"
+     id="path56"
+     style="fill-opacity:1;fill:url(#radialGradient956)" />
+  <path
+     fill="#ffffff"
+     d="m100.04 75.878l-60.401 63.952 54.97-30.16 28.721 30.16 60.06-63.952-54.36 29.632-28.99-29.632z"
+     id="path58" />
+</svg>
