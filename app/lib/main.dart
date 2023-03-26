@@ -1,4 +1,4 @@
-import './screens/welcome/welcome_screen.dart';
+import 'screens/welcome_screen.dart';
 import './theme.dart';
 import 'package:flutter/material.dart';
 
