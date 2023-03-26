@@ -1,6 +1,8 @@
 import '/components/primary_button.dart';
 import '/constants.dart';
 import '/screens/chat/home.dart';
+import '../../components/chat_input.dart';
+import '../../components/login_input.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatelessWidget {
@@ -15,11 +17,14 @@ class Login extends StatelessWidget {
               Spacer(flex: 2),
               Image.asset(
                 MediaQuery.of(context).platformBrightness == Brightness.light
-                    ? "assets/images/Logo_light.png"
-                    : "assets/images/Logo_dark.png",
+                    ? "assets/images/main.png"
+                    : "assets/images/main.png",
                 height: 146,
               ),
               Spacer(),
+              ChatInput(),
+              LoginInput(type: 'Email'),
+              LoginInput(type: 'Password'),
               PrimaryButton(
                 text: "Sign In",
                 press: () => Navigator.push(
