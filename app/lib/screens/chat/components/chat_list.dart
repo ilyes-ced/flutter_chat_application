@@ -7,23 +7,26 @@ import 'package:flutter/material.dart';
 
 List contacts = [
   Contact(
+    id: 1,
     name: "ahmed",
     lastMessage: "lorem lorem lorem lorem loremlorem lorem lorem",
-    image: "assets/images/user1.png",
+    image: "assets/images/user1.jpg",
     time: "16m ago",
     isActive: false,
   ),
   Contact(
+    id: 1,
     name: "ahmed",
     lastMessage: "lorem lorem lorem lorem loremlorem lorem lorem",
-    image: "assets/images/user2.png",
+    image: "assets/images/user2.jpg",
     time: "16m ago",
     isActive: false,
   ),
   Contact(
+    id: 1,
     name: "ahmed",
     lastMessage: "lorem lorem lorem lorem loremlorem lorem lorem",
-    image: "assets/images/user3.png",
+    image: "assets/images/user3.jpg",
     time: "16m ago",
     isActive: true,
   ),
@@ -35,8 +38,8 @@ class ChatList extends StatelessWidget {
     return Column(
       children: [
         Container(
-          padding: EdgeInsets.fromLTRB(
-              default_padding, 0, default_padding, default_padding),
+          padding: EdgeInsets.fromLTRB(default_padding, default_padding / 2,
+              default_padding, default_padding / 2),
           color: primary_color,
           child: Row(
             children: [
@@ -53,7 +56,15 @@ class ChatList extends StatelessWidget {
         Expanded(
           child: ListView.builder(
             itemCount: contacts.length,
-            itemBuilder: (context, index) => ChatNode(),
+            itemBuilder: (context, index) => ChatNode(
+              chat: contacts[index],
+              press: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Convo(),
+                ),
+              ),
+            ),
           ),
         ),
       ],
