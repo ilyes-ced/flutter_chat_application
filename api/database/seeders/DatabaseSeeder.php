@@ -68,71 +68,44 @@ class DatabaseSeeder extends Seeder
 
         
 
-        Db::table('group_members')->insert([
-            'group_id' => 1,
-            'user_id' => 1,
-        ]);
-        Db::table('group_members')->insert([
-            'group_id' => 1,
-            'user_id' => 2,
-        ]);
-        Db::table('group_members')->insert([
-            'group_id' => 1,
-            'user_id' => 3,
-        ]);
-        Db::table('group_members')->insert([
-            'group_id' => 2,
-            'user_id' => 1,
-        ]);
-        
 
 
 
 
-        Db::table('group_messages')->insert([
-            'user_id' => 1,
-            'message' => 'hello 1',
-            'group_id' => 1,
-        ]);
-        Db::table('group_messages')->insert([
-            'user_id' => 2,
-            'message' => 'hello 2 user2',
-            'group_id' => 1,
-        ]);
-        Db::table('group_messages')->insert([
-            'user_id' => 3,
-            'message' => 'hello 1 suser 3',
-            'group_id' => 1,
-        ]);
-        Db::table('group_messages')->insert([
-            'user_id' => 1,
-            'message' => 'hello 1user 1  ',
-            'group_id' => 1,
-        ]);
-        Db::table('group_messages')->insert([
-            'user_id' => 1,
-            'message' => 'hello 1user 1  ',
-            'group_id' => 1,
-        ]);
-
-        
-        
-        Db::table('user_messages')->insert([
+        Db::table('messages')->insert([
             'sender_id' => 1,
-            'message' => 'hello 1user 1 to user2',
+            'message' => 'hello 1',
+            'type' => 'group',
+            'reciever_id' => 1,
+        ]);
+        Db::table('messages')->insert([
+            'sender_id' => 2,
+            'message' => 'hello 2 user2',
+            'type' => 'group',
+            'reciever_id' => 1,
+        ]);
+        Db::table('messages')->insert([
+            'sender_id' => 3,
+            'message' => 'hello 1 suser 3',
+            'type' => 'group',
+            'reciever_id' => 1,
+        ]);
+        Db::table('messages')->insert([
+            'sender_id' => 1,
+            'message' => 'hello 1user 1  ',
+            'type' => 'user',
             'reciever_id' => 2,
         ]);
-        Db::table('user_messages')->insert([
-            'sender_id' => 2,
-            'message' => 'hello 1user 1 to user2',
-            'reciever_id' => 1,
+        Db::table('messages')->insert([
+            'sender_id' => 1,
+            'message' => 'hello 1user 1  ',
+            'type' => 'user',
+            'reciever_id' => 2,
         ]);
-        Db::table('user_messages')->insert([
-            'sender_id' => 3,
-            'message' => 'hello 1user 1 to user2',
-            'reciever_id' => 1,
-        ]);
+
         
+        
+    
         
         
 
