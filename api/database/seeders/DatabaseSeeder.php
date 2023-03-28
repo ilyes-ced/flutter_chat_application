@@ -75,33 +75,38 @@ class DatabaseSeeder extends Seeder
 
         Db::table('messages')->insert([
             'sender_id' => 1,
-            'message' => 'hello 1',
-            'type' => 'group',
             'reciever_id' => 1,
+            'message' => 'hello 1',
+            'type' => 'text',
+            'reciever_type' => 'group',
         ]);
         Db::table('messages')->insert([
             'sender_id' => 2,
-            'message' => 'hello 2 user2',
-            'type' => 'group',
             'reciever_id' => 1,
+            'message' => 'hello 2 user2',
+            'type' => 'text',
+            'reciever_type' => 'group',
         ]);
         Db::table('messages')->insert([
             'sender_id' => 3,
-            'message' => 'hello 1 suser 3',
-            'type' => 'group',
             'reciever_id' => 1,
+            'message' => 'hello 1 suser 3',
+            'type' => 'text',
+            'reciever_type' => 'group',
         ]);
         Db::table('messages')->insert([
             'sender_id' => 1,
-            'message' => 'hello 1user 1  ',
-            'type' => 'user',
             'reciever_id' => 2,
+            'message' => 'hello 1user 1  ',
+            'type' => 'text',
+            'reciever_type' => 'user',
         ]);
         Db::table('messages')->insert([
             'sender_id' => 1,
-            'message' => 'hello 1user 1  ',
-            'type' => 'user',
             'reciever_id' => 2,
+            'message' => 'hello 1user 1  ',
+            'type' => 'text',
+            'reciever_type' => 'user',
         ]);
 
         

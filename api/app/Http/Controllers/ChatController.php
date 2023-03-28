@@ -10,11 +10,22 @@ use Illuminate\Http\Reqponse;
 
 class ChatController extends Controller{
     
+
+
     public function get_messages(Request $request){
-        return response(
-            $request->all()
-            , 200
-        );
+
+        $res = Message::where('type', $request->type)
+                ->where('reciever_id', $request->reciever_id)
+                ->orderBy('id', 'desc')
+                ->limit($request->limit)->offset($request->offset)
+                ->orderBy('id', 'asc')
+                ->get();
+
+        return [
+            $res,
+            $request->all(),
+            200
+        ];
     
     }
 

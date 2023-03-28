@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->foreignId('sender_id');
-            $table->string('message');
-            $table->string('type');
             $table->foreignId('reciever_id');
+            $table->string('message');
+            $table->string('reciever_type');
+            $table->string('type');
             $table->foreign('sender_id')->references('id')->on('users');
             $table->timestamps();
         });
