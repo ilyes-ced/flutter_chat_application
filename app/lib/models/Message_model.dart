@@ -8,8 +8,8 @@ class MessageModel {
     this.msg = '',
     this.sender = 0,
     this.reciever = 0,
-    this.type = '',
-    this.status = '',
+    this.type = 'text',
+    this.status = 'not_sent',
     this.isSender = false,
   });
 }
