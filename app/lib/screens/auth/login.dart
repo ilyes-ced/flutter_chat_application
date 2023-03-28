@@ -7,41 +7,31 @@ import '/screens/chat/home.dart';
 import './register.dart';
 import '../../components/chat_input.dart';
 import '../../components/login_input.dart';
+import '/models/user_data.dart';
 
 import 'package:http/http.dart' as http;
 
-//Future<http.Response> fetchAlbum() {
-//  return http.get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1'));
-//}
-
-Future<Album> fetchAlbum() async {
-  final response =
-      await http.get(Uri.parse('https://jsonplaceholder.typicode.com/albums'));
-  if (response.statusCode == 200) {
-    return Album.fromJson(jsonDecode(response.body));
-  } else {
-    throw Exception('Failed to load album');
-  }
-}
-
-class Album {
-  final int userId;
-  final int id;
-  final String title;
-
-  const Album({
-    required this.userId,
-    required this.id,
-    required this.title,
-  });
-
-  factory Album.fromJson(Map<String, dynamic> json) {
-    return Album(
-      userId: json['userId'],
-      id: json['id'],
-      title: json['title'],
-    );
-  }
+Future<http.Response> login(String email, String password) {
+  final response = http.post(
+    Uri.parse('localhost:8000/api/login'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, String>{
+      'email': email,
+      'password': password,
+    }),
+  );
+  return response;
+  //if (response.statusCode == 201) {
+  //  // If the server did return a 201 CREATED response,
+  //  // then parse the JSON.
+  //  return response;
+  //} else {
+  //  // If the server did not return a 201 CREATED response,
+  //  // then throw an exception.
+  //  throw Exception('Failed to create album.');
+  //}
 }
 
 class Login extends StatefulWidget {
@@ -52,13 +42,10 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  late Future<Album> futureAlbum;
-
+  Future<http.Response>? result;
   @override
   void initState() {
     super.initState();
-    futureAlbum = fetchAlbum();
-    debugPrint(futureAlbum.toString());
   }
 
   @override
@@ -77,19 +64,6 @@ class _LoginState extends State<Login> {
                 height: 146,
               ),
               SizedBox(height: default_padding * 1),
-              FutureBuilder<Album>(
-                future: futureAlbum,
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return Text(snapshot.data!.title);
-                  } else if (snapshot.hasError) {
-                    return Text('${snapshot.error}');
-                  }
-
-                  // By default, show a loading spinner.
-                  return const CircularProgressIndicator();
-                },
-              ),
               Text(
                 "Messenger lite",
                 textAlign: TextAlign.center,
@@ -118,14 +92,14 @@ class _LoginState extends State<Login> {
                 SizedBox(width: default_padding * 2),
                 Expanded(
                   child: PrimaryButton(
-                    text: "login",
-                    press: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ChatHome(),
-                      ),
-                    ),
-                  ),
+                      text: "login",
+                      press: () => {
+                            setState(() {
+                              print('hello');
+                              result = login('fzef', 'fezfez');
+                              print(result);
+                            }),
+                          }),
                 ),
               ]),
               Spacer(flex: 2),

@@ -9,27 +9,32 @@ use Illuminate\Http\Reqponse;
 
 
 class ChatController extends Controller{
-
+    
+    public function get_messages(Request $request){
+        return response(
+            $request->all()
+            , 200
+        );
+    
+    }
 
     public function init(Request $request){
         $q1 = Auth()->user()->user_relations_started()->get();
         $q2 = Auth()->user()->user_relations_in()->get();
 
         foreach ($q1 as $key => $value) {
-            error_log($value);
             $qq = Message::where('sender_id', $value->user_id_1)->orWhere('sender_id', $value->user_id_2)->orderBy('id', 'desc')->first();
-            $q1->last_message = $qq;
-            
-            error_log($qq);
+            $q1[$key]['last_message'] = $qq;
+        }
+        foreach ($q2 as $key => $value) {
+            $qq = Message::where('sender_id', $value->user_id_1)->orWhere('sender_id', $value->user_id_2)->orderBy('id', 'desc')->first();
+            $q2[$key]['last_message'] = $qq;
         }
 
         $response= [
             'r' => $q1,
             'rv' => $q2,
-            'relations_started' => '',
-            'relations_in' => '',
         ];
-        //dd($response);
         return response($response, 201);
     }
 

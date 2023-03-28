@@ -1,19 +1,12 @@
-class Album {
-  final int userId;
+class User {
   final int id;
-  final String title;
+  final String username, email, profileImage, token;
 
-  const Album({
-    required this.userId,
+  const User({
     required this.id,
-    required this.title,
+    required this.username,
+    required this.email,
+    required this.profileImage,
+    required this.token,
   });
-
-  factory Album.fromJson(Map<String, dynamic> json) {
-    return Album(
-      userId: json['userId'],
-      id: json['id'],
-      title: json['title'],
-    );
-  }
 }

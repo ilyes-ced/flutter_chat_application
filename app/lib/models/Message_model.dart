@@ -1,6 +1,7 @@
 class MessageModel {
   final int id, sender, reciever;
   final String msg, type, status;
+  final bool isSender;
 
   MessageModel({
     this.id = 0,
@@ -9,5 +10,6 @@ class MessageModel {
     this.reciever = 0,
     this.type = '',
     this.status = '',
+    this.isSender = false,
   });
 }
