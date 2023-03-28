@@ -25,6 +25,7 @@ class AuthController extends Controller
 
         $token = $user->createToken('some_secret_token')->plainTextToken;
 
+
         $response= [
             'user' => $user,
             'token' => $token,
@@ -51,13 +52,24 @@ class AuthController extends Controller
 
         $token = $user->createToken('some_secret_token')->plainTextToken;
 
+        $q1 = Auth()->user()->user_relations_started()->get();
+        $q2 = Auth()->user()->user_relations_in()->get();
+
+        foreach ($q1 as $key => $value) {
+            error_log($key);
+        }
+
         $response= [
             'user' => $user,
             'token' => $token,
+            'relations_started' => '',
+            'relations_in' => '',
         ];
-
+        dd($response);
         return response($response, 201);
     }
+
+    
 
 
     public function logout(Request $request){

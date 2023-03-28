@@ -45,13 +45,14 @@ class DatabaseSeeder extends Seeder
             'user_id_1' => 1,
             'user_id_2' => 2,
         ]);
-        Db::table('user_relations')->insert([
-            'user_id_1' => 1,
-            'user_id_2' => 3,
-        ]);
+
         Db::table('user_relations')->insert([
             'user_id_1' => 3,
             'user_id_2' => 2,
+        ]);
+        Db::table('user_relations')->insert([
+            'user_id_1' => 3,
+            'user_id_2' => 1,
         ]);
 
 

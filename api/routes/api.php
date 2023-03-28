@@ -36,6 +36,7 @@ Route::get('/url', function(){
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout' ]);
     Route::get('/all_chats', [ChatController::class, 'all_chats' ]);
+    Route::get('/init', [ChatController::class, 'init' ]);
 });
 
 Route::middleware('auth:sanctum')->get('/data', function (Request $request) {
