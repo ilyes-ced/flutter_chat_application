@@ -8,6 +8,9 @@ import 'package:flutter/material.dart';
 class Register extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    TextEditingController emailController = TextEditingController();
+    TextEditingController userNameController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -31,9 +34,9 @@ class Register extends StatelessWidget {
                     .copyWith(fontWeight: FontWeight.bold),
               ),
               SizedBox(height: default_padding * 3),
-              LoginInput(type: 'Username'),
-              LoginInput(type: 'Email'),
-              LoginInput(type: 'Password'),
+              LoginInput(type: 'Username', controller: emailController),
+              LoginInput(type: 'Email', controller: userNameController),
+              LoginInput(type: 'Password', controller: passwordController),
               SizedBox(height: default_padding * 1),
               Row(children: [
                 Expanded(

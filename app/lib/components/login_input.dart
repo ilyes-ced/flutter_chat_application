@@ -4,7 +4,10 @@ import '/constants.dart';
 
 class LoginInput extends StatefulWidget {
   final String? type;
-  LoginInput({Key? key, required this.type}) : super(key: key);
+  TextEditingController? controller;
+
+  LoginInput({Key? key, required this.type, required this.controller})
+      : super(key: key);
 
   @override
   _LoginInputState createState() => _LoginInputState();
@@ -45,6 +48,8 @@ class _LoginInputState extends State<LoginInput> {
                     SizedBox(width: default_padding / 4),
                     Expanded(
                       child: TextField(
+                        //onChanged: (s) => {print(s)},
+                        controller: widget.controller,
                         textAlignVertical: TextAlignVertical.center,
                         decoration: InputDecoration(
                           hintText: "${widget.type}",

@@ -12,9 +12,10 @@ class Message extends Model
 
     protected $fillable = [
         'sender_id',
+        'reciever_id',
         'message',
         'type',
-        'reciever_id',
+        'reciever_type',
     ];
 
 
@@ -30,5 +31,4 @@ class Message extends Model
         return $this->belongsTo(User::class, 'reciever_id');
     }
 
-    
 }

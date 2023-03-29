@@ -13,7 +13,7 @@ import 'package:http/http.dart' as http;
 
 Future<http.Response> login(String email, String password) {
   final response = http.post(
-    Uri.parse('localhost:8000/api/login'),
+    Uri.parse('http://10.0.2.2:8000/api/login'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
@@ -50,6 +50,8 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController emailController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -73,8 +75,8 @@ class _LoginState extends State<Login> {
                     .copyWith(fontWeight: FontWeight.bold),
               ),
               SizedBox(height: default_padding * 3),
-              LoginInput(type: 'Email'),
-              LoginInput(type: 'Password'),
+              LoginInput(type: 'Email', controller: emailController),
+              LoginInput(type: 'Password', controller: passwordController),
               SizedBox(height: default_padding * 1),
               Row(children: [
                 Expanded(
@@ -98,6 +100,8 @@ class _LoginState extends State<Login> {
                               print('hello');
                               result = login('fzef', 'fezfez');
                               print(result);
+                              print(emailController.text);
+                              print(passwordController.text);
                             }),
                           }),
                 ),

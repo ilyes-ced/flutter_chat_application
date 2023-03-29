@@ -24,7 +24,8 @@ class AuthController extends Controller
         ]);
 
         $token = $user->createToken('some_secret_token')->plainTextToken;
-
+        log('fezfzef');
+        error_log('fezfzef');
 
         $response= [
             'user' => $user,
@@ -41,6 +42,8 @@ class AuthController extends Controller
             'email' => 'required|string',
             'password' => 'required|string',
         ]);
+        log('fezfzef');
+        error_log('fezfzef');
 
         $user = User::where('email', $fields['email'])->first();
         if(!$user || !Hash::check($fields['password'], $user->password)){
