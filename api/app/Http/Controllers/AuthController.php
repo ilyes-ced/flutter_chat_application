@@ -28,6 +28,7 @@ class AuthController extends Controller
         error_log('fezfzef');
 
         $response= [
+            'message' => "success",
             'user' => $user,
             'token' => $token,
         ];
@@ -37,9 +38,10 @@ class AuthController extends Controller
 
 
     public function login(Request $request){
+        error_log(json_encode($request->all()));
 
         $fields = $request->validate([
-            'email' => 'required|string',
+            'email' => 'required|string|exists:users',
             'password' => 'required|string',
         ]);
 

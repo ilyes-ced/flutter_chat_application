@@ -8,11 +8,11 @@ import './register.dart';
 import '../../components/chat_input.dart';
 import '../../components/login_input.dart';
 import '/models/user_data.dart';
-
 import 'package:http/http.dart' as http;
 
 Future<http.Response> login(String email, String password) async {
-  final response = await http.post(
+  final response = await http
+      .post(
     Uri.parse('http://10.0.2.2:8000/api/login'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
@@ -21,9 +21,23 @@ Future<http.Response> login(String email, String password) async {
       'email': email,
       'password': password,
     }),
-  );
-  print(response);
+  )
+      .then((http.Response response) {
+    Map<String, dynamic> Data = json.decode(response.body);
+    Data.forEach((String data, dynamic data_value) {
+      print(data + " : ");
+      print(data_value.toString());
+      //  Map<String,String> decoded_data=json.decode(data);
+      //  print(data_value.toString());
+      //print(data['title']);
+      //print(data['content']);
+    });
+  });
   return response;
+  //print("//////////////////////////");
+  //print(response);
+  //print("//////////////////////////");
+
   //if (response.statusCode == 201) {
   //  // If the server did return a 201 CREATED response,
   //  // then parse the JSON.
@@ -99,7 +113,7 @@ class _LoginState extends State<Login> {
                     press: () async {
                       result = await login(
                           emailController.text, passwordController.text);
-                      print(await result);
+                      print(result);
                     },
                   ),
                 ),
