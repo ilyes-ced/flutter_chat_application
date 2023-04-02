@@ -6,11 +6,11 @@ import '../../components/login_input.dart';
 import 'package:flutter/material.dart';
 
 class Register extends StatelessWidget {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController userNameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    TextEditingController emailController = TextEditingController();
-    TextEditingController userNameController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
     return Scaffold(
       body: SafeArea(
         child: Padding(

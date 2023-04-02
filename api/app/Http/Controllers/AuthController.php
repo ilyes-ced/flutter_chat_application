@@ -42,8 +42,9 @@ class AuthController extends Controller
             'email' => 'required|string',
             'password' => 'required|string',
         ]);
-        log('fezfzef');
-        error_log('fezfzef');
+
+        error_log(json_encode($fields));
+        
 
         $user = User::where('email', $fields['email'])->first();
         if(!$user || !Hash::check($fields['password'], $user->password)){

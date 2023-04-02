@@ -11,8 +11,8 @@ import '/models/user_data.dart';
 
 import 'package:http/http.dart' as http;
 
-Future<http.Response> login(String email, String password) {
-  final response = http.post(
+Future<http.Response> login(String email, String password) async {
+  final response = await http.post(
     Uri.parse('http://10.0.2.2:8000/api/login'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
@@ -22,6 +22,7 @@ Future<http.Response> login(String email, String password) {
       'password': password,
     }),
   );
+  print(response);
   return response;
   //if (response.statusCode == 201) {
   //  // If the server did return a 201 CREATED response,
@@ -42,7 +43,9 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  Future<http.Response>? result;
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  dynamic? result;
   @override
   void initState() {
     super.initState();
@@ -50,8 +53,6 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController emailController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -94,16 +95,13 @@ class _LoginState extends State<Login> {
                 SizedBox(width: default_padding * 2),
                 Expanded(
                   child: PrimaryButton(
-                      text: "login",
-                      press: () => {
-                            setState(() {
-                              print('hello');
-                              result = login('fzef', 'fezfez');
-                              print(result);
-                              print(emailController.text);
-                              print(passwordController.text);
-                            }),
-                          }),
+                    text: "login",
+                    press: () async {
+                      result = await login(
+                          emailController.text, passwordController.text);
+                      print(await result);
+                    },
+                  ),
                 ),
               ]),
               Spacer(flex: 2),
