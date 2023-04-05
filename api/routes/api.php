@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\MessageController;
+use App\Events\test;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,10 @@ Route::get('/url', function(){
     return('hello there');
 });
 
+Route::get('/socket', function(){
+    event(new test());
+    return null;
+});
 
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
