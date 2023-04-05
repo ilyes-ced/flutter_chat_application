@@ -9,13 +9,28 @@ import '../../components/chat_input.dart';
 import '../../components/login_input.dart';
 import '/models/user_data.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
+
+saveAuth(String body) async {
+  print("///////////////////////////////////");
+  Map<dynamic, String> user_data = jsonDecode(body);
+  print("///////////////////////////////////");
+
+  print(user_data);
+  //print(user_data['user']);
+  //print(user_data['token']);
+  print("///////////////////////////////////");
+}
 
 Future<http.Response> login(String email, String password) async {
+  print(email);
+  print(password);
   final response = await http
       .post(
     Uri.parse('http://10.0.2.2:8000/api/login'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
+      'accept': 'application/json',
     },
     body: jsonEncode(<String, String>{
       'email': email,
@@ -23,16 +38,19 @@ Future<http.Response> login(String email, String password) async {
     }),
   )
       .then((http.Response response) {
-    Map<String, dynamic> Data = json.decode(response.body);
-    Data.forEach((String data, dynamic data_value) {
-      print(data + " : ");
-      print(data_value.toString());
-      //  Map<String,String> decoded_data=json.decode(data);
-      //  print(data_value.toString());
-      //print(data['title']);
-      //print(data['content']);
-    });
+    if (response.statusCode == 201) {
+      saveAuth(response.body);
+
+      print(json.decode(response.body));
+      return json.decode(response.body);
+    } else {
+      print((response.statusCode));
+      print((response.body));
+
+      throw Exception('Failed to load post');
+    }
   });
+
   return response;
   //print("//////////////////////////");
   //print(response);
@@ -59,10 +77,26 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  dynamic? result;
+
   @override
   void initState() {
     super.initState();
+    chechAuth();
+  }
+
+  //Loading counter value on start
+  Future<void> chechAuth() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      if (prefs.getString('user_data') != null) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ChatHome(),
+          ),
+        );
+      }
+    });
   }
 
   @override
@@ -110,10 +144,8 @@ class _LoginState extends State<Login> {
                 Expanded(
                   child: PrimaryButton(
                     text: "login",
-                    press: () async {
-                      result = await login(
-                          emailController.text, passwordController.text);
-                      print(result);
+                    press: () {
+                      login(emailController.text, passwordController.text);
                     },
                   ),
                 ),

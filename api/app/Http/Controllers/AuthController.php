@@ -39,6 +39,8 @@ class AuthController extends Controller
 
     public function login(Request $request){
         error_log(json_encode($request->all()));
+        error_log(json_encode($request->all()));
+        error_log(json_encode($request->all()));
 
         $fields = $request->validate([
             'email' => 'required|string|exists:users',
@@ -54,10 +56,12 @@ class AuthController extends Controller
                 'message' => 'wrong credentials'
             ], 401);
         }
+        error_log(json_encode($user));
 
 
         $token = $user->createToken('some_secret_token')->plainTextToken;
 
+        error_log(json_encode($token));
    
 
         $response= [
