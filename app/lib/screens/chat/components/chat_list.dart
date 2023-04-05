@@ -4,6 +4,7 @@ import '/screens/chat/convo.dart';
 import './button.dart';
 import './chat_node.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 List contacts = [
   Contact(
@@ -32,11 +33,32 @@ List contacts = [
   ),
 ];
 
-class ChatList extends StatelessWidget {
+class ChatList extends StatefulWidget {
+  ChatList({Key? key}) : super(key: key);
+
+  @override
+  _ChatListState createState() => _ChatListState();
+}
+
+class _ChatListState extends State<ChatList> {
+  @override
+  void initState() {
+    super.initState();
+    chechAuth();
+  }
+
+  //Loading counter value on start
+  Future<void> chechAuth() async {
+    final prefs = await SharedPreferences.getInstance();
+    String? kk = prefs.getString('token');
+    print(kk);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
+        Text('feffe'),
         Container(
           padding: EdgeInsets.fromLTRB(default_padding, default_padding / 2,
               default_padding, default_padding / 2),

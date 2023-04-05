@@ -29,24 +29,32 @@ class ChatController extends Controller{
     
     }
 
-    public function init(Request $request){
-        $q1 = Auth()->user()->user_relations_started()->get();
-        $q2 = Auth()->user()->user_relations_in()->get();
+    public function init_chats(Request $request){
+        $query1 = Auth()->user()->user_relations_started()->get();
+        $query2 = Auth()->user()->user_relations_in()->get();
 
-        foreach ($q1 as $key => $value) {
-            $qq = Message::where('sender_id', $value->user_id_1)->orWhere('sender_id', $value->user_id_2)->orderBy('id', 'desc')->first();
-            $q1[$key]['last_message'] = $qq;
+        foreach ($query1 as $key => $value) {
+            $chat_data = Message::where('sender_id', $value->user_id_1)->orWhere('sender_id', $value->user_id_2)->orderBy('id', 'desc')->first();
+            $contact_data = User::where('id', $value->user_id_2)->get(['username', 'profile_image', 'is_active', 'last_active']);
+            $query1[$key]['last_message'] = $chat_data;
+            $query1[$key]['contact_data'] = $contact_data;
         }
-        foreach ($q2 as $key => $value) {
-            $qq = Message::where('sender_id', $value->user_id_1)->orWhere('sender_id', $value->user_id_2)->orderBy('id', 'desc')->first();
-            $q2[$key]['last_message'] = $qq;
+        foreach ($query2 as $key => $value) {
+            $chat_data = Message::where('sender_id', $value->user_id_1)->orWhere('sender_id', $value->user_id_2)->orderBy('id', 'desc')->first();
+            $contact_data = User::where('id', $value->user_id_1)->get(['username', 'profile_image', 'is_active', 'last_active']);
+            $query2[$key]['last_message'] = $chat_data;
+            $query2[$key]['contact_data'] = $contact_data;
         }
 
-        $response= [
-            'r' => $q1,
-            'rv' => $q2,
-        ];
-        return response($response, 201);
+        $query1 = $query1->merge($query2);
+
+        // to sort chats by the latest message
+        // chat with latest message is first
+        $sorted = $query1->sortBy(function ($queries) {
+            return $queries->last_message->created_at;
+        });
+
+        return response($sorted, 201);
     }
 
 

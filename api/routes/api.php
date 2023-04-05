@@ -39,7 +39,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/add_message', [MessageController::class, 'add_message' ]);
 
     Route::get('/all_chats', [ChatController::class, 'all_chats' ]);
-    Route::get('/init', [ChatController::class, 'init' ]);
+    Route::get('/init_chats', [ChatController::class, 'init_chats' ]);
     Route::get('/get_messages', [ChatController::class, 'get_messages' ]);
 });
 

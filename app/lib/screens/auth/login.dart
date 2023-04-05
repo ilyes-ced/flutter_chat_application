@@ -12,14 +12,10 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 saveAuth(String body) async {
-  print("///////////////////////////////////");
-  Map<dynamic, String> user_data = jsonDecode(body);
-  print("///////////////////////////////////");
-
-  print(user_data);
-  //print(user_data['user']);
-  //print(user_data['token']);
-  print("///////////////////////////////////");
+  final prefs = await SharedPreferences.getInstance();
+  Map<String, dynamic> user_data = jsonDecode(body);
+  prefs.setString('user_data', jsonEncode(user_data['user']));
+  prefs.setString('token', user_data['token']);
 }
 
 Future<http.Response> login(String email, String password) async {
