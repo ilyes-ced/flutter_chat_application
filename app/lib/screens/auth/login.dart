@@ -7,20 +7,23 @@ import '/screens/chat/home.dart';
 import './register.dart';
 import '../../components/chat_input.dart';
 import '../../components/login_input.dart';
-import '/models/user_data.dart';
+//import '/models/user_data.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 saveAuth(String body) async {
-  final prefs = await SharedPreferences.getInstance();
-  Map<String, dynamic> user_data = jsonDecode(body);
-  prefs.setString('user_data', jsonEncode(user_data['user']));
-  prefs.setString('token', user_data['token']);
+  //final data = await supabase.from('countries').select('name');
+  //print("data");
+  //print(data);
+  //final prefs = await SharedPreferences.getInstance();
+  //Map<String, dynamic> user_data = jsonDecode(body);
+  //prefs.setString('user_data', jsonEncode(user_data['user']));
+  //prefs.setString('token', user_data['token']);
 }
 
+/*
 Future<http.Response> login(String email, String password) async {
-  print(email);
-  print(password);
   final response = await http
       .post(
     Uri.parse('http://10.0.2.2:8000/api/login'),
@@ -48,19 +51,20 @@ Future<http.Response> login(String email, String password) async {
   });
 
   return response;
-  //print("//////////////////////////");
-  //print(response);
-  //print("//////////////////////////");
+}
+*/
 
-  //if (response.statusCode == 201) {
-  //  // If the server did return a 201 CREATED response,
-  //  // then parse the JSON.
-  //  return response;
-  //} else {
-  //  // If the server did not return a 201 CREATED response,
-  //  // then throw an exception.
-  //  throw Exception('Failed to create album.');
-  //}
+login(String email, String password) async {
+  final supabase = Supabase.instance.client;
+  final AuthResponse res = await supabase.auth.signInWithPassword(
+    email: 'dude@gmail.com',
+    password: "password",
+  );
+  final Session? session = res.session;
+  final User? user = res.user;
+  print("data");
+  print(session);
+  print(user);
 }
 
 class Login extends StatefulWidget {
