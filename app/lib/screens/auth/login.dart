@@ -145,7 +145,13 @@ class _LoginState extends State<Login> {
                   child: PrimaryButton(
                     text: "login",
                     press: () {
-                      login(emailController.text, passwordController.text);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ChatHome(),
+                        ),
+                      );
+                      //login(emailController.text, passwordController.text);
                     },
                   ),
                 ),

@@ -58,7 +58,6 @@ class _ChatListState extends State<ChatList> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text('feffe'),
         Container(
           padding: EdgeInsets.fromLTRB(default_padding, default_padding / 2,
               default_padding, default_padding / 2),
