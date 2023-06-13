@@ -9,7 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 List contacts = [
   Contact(
     id: 1,
-    name: "ahmed",
+    name: "alex",
     lastMessage: "lorem lorem lorem lorem loremlorem lorem lorem",
     image: "assets/images/user1.jpg",
     time: "16m ago",
@@ -17,7 +17,7 @@ List contacts = [
   ),
   Contact(
     id: 1,
-    name: "ahmed",
+    name: "james",
     lastMessage: "lorem lorem lorem lorem loremlorem lorem lorem",
     image: "assets/images/user2.jpg",
     time: "16m ago",
@@ -25,7 +25,7 @@ List contacts = [
   ),
   Contact(
     id: 1,
-    name: "ahmed",
+    name: "thomas the tank engine",
     lastMessage: "lorem lorem lorem lorem loremlorem lorem lorem",
     image: "assets/images/user3.jpg",
     time: "16m ago",
